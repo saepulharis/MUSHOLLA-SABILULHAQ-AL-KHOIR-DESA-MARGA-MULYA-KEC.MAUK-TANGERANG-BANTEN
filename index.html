@@ -14,41 +14,50 @@
     header, .credit-footer {
       background-color: #d60000;
       color: white;
+      text-align: center;
       padding: 1.5em;
       position: relative;
     }
-    .hamburger {
-      position: absolute;
-      left: 1em;
-      top: 1.2em;
-      cursor: pointer;
+    .menu-toggle {
       display: block;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 1000;
     }
-    .hamburger div {
+    .menu-toggle div {
       width: 25px;
       height: 3px;
       background-color: white;
       margin: 5px 0;
     }
-    .nav-menu {
+    nav {
       display: none;
       flex-direction: column;
       background-color: #fff;
-      border-top: 2px solid #d60000;
-      padding: 1em;
-      position: absolute;
-      top: 70px;
-      width: 100%;
+      border-bottom: 2px solid #d60000;
     }
-    .nav-menu a {
-      padding: 10px;
+    nav.show {
+      display: flex;
+    }
+    nav a {
+      padding: 1em;
+      text-align: center;
       text-decoration: none;
       color: #d60000;
       font-weight: bold;
-      border-bottom: 1px solid #eee;
     }
-    .show-menu {
-      display: flex;
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none !important;
+      }
+      nav {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center;
+        position: static;
+      }
     }
     .container {
       padding: 2em;
@@ -110,6 +119,12 @@
     footer form button:hover {
       background-color: #f5f5f5;
     }
+    .sosmed-icons a img {
+      transition: transform 0.2s ease;
+    }
+    .sosmed-icons a:hover img {
+      transform: scale(1.2);
+    }
     .sosmed-icons {
       display: flex;
       justify-content: center;
@@ -117,41 +132,29 @@
       flex-wrap: wrap;
       margin-top: 10px;
     }
-    .sosmed-icons a img {
-      transition: transform 0.2s ease;
-    }
-    .sosmed-icons a:hover img {
-      transform: scale(1.2);
-    }
     .credit-footer {
       font-size: 0.9em;
+      background-color: #d60000;
+      color: white;
+      padding: 1em;
+      text-align: center;
     }
-    .whatsapp-float {
+    .floating-wa {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 999;
     }
-    .whatsapp-float img {
-      width: 55px;
-      height: 55px;
-    }
-    .link-website {
-      text-align: center;
-      padding: 1em;
-      background: #fff;
-    }
-    .link-website a {
-      color: #d60000;
-      text-decoration: none;
-      font-weight: bold;
+    .floating-wa img {
+      width: 50px;
+      height: 50px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="hamburger" onclick="toggleMenu()">
+  <div class="menu-toggle" onclick="toggleMenu()">
     <div></div>
     <div></div>
     <div></div>
@@ -160,43 +163,100 @@
   <div id="clock" class="clock"></div>
 </header>
 
-<nav id="menu" class="nav-menu">
-  <a href="#jadwal">Home</a>
+<nav id="menuNav">
   <a href="#jadwal">Jadwal Sholat</a>
   <a href="#youtube">Video Islami</a>
   <a href="#kiblat">Arah Kiblat</a>
   <a href="#quran">Al-Qur'an Digital</a>
-  <a href="#doa">Doa & Ceramah</a>
+  <a href="#doa">Doa-doa & Ceramah</a>
 </nav>
 
 <div class="container">
-  <!-- Isi sebelumnya tetap sama -->
+  <div class="section" id="jadwal">
+    <h2>Jadwal Sholat Bulanan (Desa Marga Mulya Mauk, Tangerang)</h2>
+    <iframe src="https://www.jadwalsholat.org/adzan/monthly.php?id=273" height="400"></iframe>
+  </div>
+
+  <div class="section" id="youtube">
+    <h2>Video Islami</h2>
+    <div class="video-grid">
+      <iframe src="https://www.youtube.com/embed/MPcEVOx5o2o" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/fjcsyAa2vTw" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/CjKJPfikbXo" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/Jac-sSBy3Wc" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/tM8-87X1Dgw" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/UcHKLK1ajCs" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/kvNj9ee2R0E" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/4hgkN03eKSI" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/-WNRzA3vmdk" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/1QMEwAvdGJY" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/3NefBJHFZJg" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="section" id="kiblat">
+    <h2>Arah Kiblat</h2>
+    <p>Silakan klik tombol di bawah ini untuk membuka arah kiblat:</p>
+    <a href="https://qiblafinder.withgoogle.com" target="_blank">Buka Arah Kiblat</a>
+  </div>
+
+  <div class="section" id="quran">
+    <h2>Al-Qur'an Digital</h2>
+    <iframe src="https://quranweb.id/?embed=true" height="800"></iframe>
+  </div>
+
+  <div class="section" id="doa">
+    <h2>Doa-doa & Ceramah Ustadz</h2>
+    <div class="doa"><strong>Niat Wudhu:</strong><br />نَوَيْتُ الْوُضُوْءَ لِرَفْعِ الْحَدَثِ الأَصْغَرِ فَرْضًا ِللهِ تَعَالَى</div>
+    <div class="doa"><strong>Doa Setelah Wudhu:</strong><br />... [potong untuk singkat] ...</div>
+    <!-- Tambahan doa dan ceramah seperti sebelumnya -->
+  </div>
+
+  <!-- Info tambahan -->
+  <div style="text-align:center; margin: 2em 0; font-size: 1.1em;">
+    Info selanjutnya: <a href="https://www.margamulya-mauk.desa.id/" target="_blank">www.margamulya-mauk.desa.id</a>
+  </div>
 </div>
 
-<div class="link-website">
-  Info selanjutnya kunjungi: <a href="https://www.margamulya-mauk.desa.id/" target="_blank">www.margamulya-mauk.desa.id</a>
-</div>
-
-<a class="whatsapp-float" href="https://wa.me/6281234567890" target="_blank">
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/6281234567890" target="_blank" class="floating-wa">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
 </a>
+
+<!-- Footer -->
+<footer>
+  <h3>Tinggalkan Komentar</h3>
+  <form action="#" method="post">
+    <textarea name="komentar" rows="4" placeholder="Tulis komentar Anda..."></textarea><br>
+    <button type="submit">Kirim</button>
+  </form>
+  <h4>Ikuti Kami</h4>
+  <div class="sosmed-icons">
+    <a href="https://wa.me/6281234567890" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30"></a>
+    <a href="https://www.instagram.com/akun_instagram_anda" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" width="30"></a>
+    <a href="https://www.facebook.com/akunfacebookanda" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="30"></a>
+    <a href="https://www.youtube.com/@akun_youtube_anda" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="30"></a>
+    <a href="https://www.tiktok.com/@akun_tiktok_anda" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" width="30"></a>
+  </div>
+</footer>
 
 <div class="credit-footer">
   © 2025 | Dibuat oleh Saepul Haris27 & Diproduksi oleh PT: HRSTV.HD || HB.NET
 </div>
 
+<!-- Script jam + toggle -->
 <script>
   function updateClock() {
     const now = new Date();
     const time = now.toLocaleTimeString('id-ID', { hour12: false });
     document.getElementById('clock').textContent = time;
   }
+  function toggleMenu() {
+    const menu = document.getElementById('menuNav');
+    menu.classList.toggle('show');
+  }
   setInterval(updateClock, 1000);
   updateClock();
-
-  function toggleMenu() {
-    document.getElementById('menu').classList.toggle('show-menu');
-  }
 </script>
 
 </body>

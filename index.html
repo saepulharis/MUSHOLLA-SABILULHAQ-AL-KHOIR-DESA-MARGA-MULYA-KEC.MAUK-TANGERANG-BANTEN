@@ -149,9 +149,62 @@
       width: 50px;
       height: 50px;
     }
+
+    /* Tambahan responsif untuk layar kecil */
+    @media (max-width: 600px) {
+      .container {
+        padding: 1em;
+      }
+
+      h1 {
+        font-size: 1.4em;
+      }
+
+      .clock {
+        font-size: 1.2em;
+      }
+
+      iframe {
+        height: 220px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 1em 0.5em;
+        font-size: 0.85em;
+      }
+
+      footer form textarea {
+        width: 90%;
+        font-size: 0.85em;
+      }
+
+      footer form button {
+        padding: 8px 16px;
+        font-size: 0.85em;
+      }
+
+      .sosmed-icons a img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .credit-footer {
+        font-size: 0.8em;
+      }
+
+      .menu-toggle div {
+        width: 22px;
+        height: 2px;
+      }
+    }
   </style>
 </head>
 <body>
+<!-- ... lanjutkan isi body kamu seperti sebelumnya, tidak perlu diubah ... -->
 
 <header>
   <div class="menu-toggle" onclick="toggleMenu()">

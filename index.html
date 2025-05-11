@@ -230,7 +230,39 @@
     <iframe src="https://www.jadwalsholat.org/adzan/monthly.php?id=273" height="400"></iframe>
   </div>
   
-  <div class="section" id="youtube">
+  <h2>Jadwal Sholat Wilayah Tangerang dan Mauk marga Mulya</h2>
+
+  <label for="wilayah">Pilih Wilayah:</label>
+  <select id="wilayah" onchange="ubahWilayah()">
+    <option value="265">Mauk - Tangerang</option>
+    <option value="287">Kota Tangerang</option>
+    <option value="290">Jakarta</option>
+    <option value="292">Bekasi</option>
+    <option value="303">Bogor</option>
+    <!-- Tambah wilayah lain jika perlu -->
+  </select>
+
+  <br>
+
+  <iframe id="iframeSholat" src="https://jadwalsholat.org/jadwal-sholat/monthly.php?id=265" width="430" height="960"></iframe>
+
+  <br>
+  <a href="https://jadwalsholat.org" target="_blank">
+    <img src="https://jadwalsholat.org/wp-content/uploads/2013/09/jadwal-sholat.png" width="81" height="18" alt="jadwal-sholat">
+  </a>
+
+  <script>
+    function ubahWilayah() {
+      var id = document.getElementById("wilayah").value;
+      var iframe = document.getElementById("iframeSholat");
+      iframe.src = "https://jadwalsholat.org/jadwal-sholat/monthly.php?id=" + id;
+    }
+  </script>
+
+</body>
+</html>
+
+   <div class="section" id="youtube">
     <h2>Video Islami</h2>
     <div class="video-grid">
       <iframe src="https://www.youtube.com/embed/MPcEVOx5o2o" allowfullscreen></iframe>
